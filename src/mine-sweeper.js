@@ -43,7 +43,7 @@ function createBoardBody(playerPick, bombLocations) {
     boardBody = '+-+-+-+\n| | | |\n+-+-+-+\n| |X| |\n+-+-+-+\n| | | |\n+-+-+-+\n\n';
   } else if (playerPick[0] === true) {
     boardBody = '+-+-+-+\n|X| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n';
-  } else if (playerPick[6] === true && bombLocations[6] != true) {
+  } else if (playerPick[6] === true && !bombLocations[6]) {
     boardBody = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|3| | |\n+-+-+-+\n\n';
   } else {
     boardBody = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|X| | |\n+-+-+-+\n\n';
