@@ -39,3 +39,5 @@ Pomodoro 3:
 
 - ⚠ TODO Setup Sonarcloud
 - ✅ DONE Refactor duplicate code + resolve complexity 5
+- ⚠ TODO Refactor board creation + remove duplicate code
+- ✅ DONE more UATs

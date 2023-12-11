@@ -56,8 +56,53 @@ As a user, I want to see when player steps on the bomb and game end message
 +-+-+-+
 | | | |
 +-+-+-+
-| | |X|
+|X| | |
 +-+-+-+
 
 [Sandbox 3x3] BOOM! – Game Over.
+```
+
+User Story 3: Reveal the number of bombs around
+As a user, I want to see the number of bombs around when player reveals the square and appropriate message
+
+- ⚠ TODO UAT3.1 When player clears square [2;0] and there are 3 bombs around then I should see '
+
+```
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+|3| | |
++-+-+-+
+
+[Sandbox 3x3] 3 bombs around your square.
+```
+
+- ⚠ TODO UAT3.2 When player clears square [0;0] and there is 1 bomb around then I should see '
+
+```
++-+-+-+
+|1| | |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+
+[Sandbox 3x3] 1 bombs around your square.
+```
+
+- ⚠ TODO UAT3.3 When player clears square [2;0] and there are 2 bombs around then I should see '
+
+```
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+|2| | |
++-+-+-+
+
+[Sandbox 3x3] 2 bombs around your square.
 ```
