@@ -90,7 +90,7 @@ As a user, I want to see the number of bombs around when player reveals the squa
 | | | |
 +-+-+-+
 
-[Sandbox 3x3] 1 bombs around your square.
+[Sandbox 3x3] 1 bomb around your square.
 ```
 
 - ⚠ TODO UAT3.3 When player clears square [2;0] and there are 2 bombs around then I should see '

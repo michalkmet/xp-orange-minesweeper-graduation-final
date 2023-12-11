@@ -34,4 +34,10 @@ describe('User Story 3: Reveal the number of bombs around', () => {
     let expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|3| | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square.';
     expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
   });
+  it('UAT3.2 When player clears square [0;0] and there is 1 bomb around then I should see "+-+-+-+\n|1| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bomb around your square."', () => {
+    let playerPick = [true, false, false, false, false, false, false, false, false];
+    let bombLocations = [false, true, false, false, false, false, false, false, false];
+    let expectedBoard = '+-+-+-+\n|1| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bomb around your square.';
+    expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
+  });
 });
