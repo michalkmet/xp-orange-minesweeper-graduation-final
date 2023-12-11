@@ -23,3 +23,8 @@ Pomodoro 2:
 
 - ⚠ TODO Setup Sonarcloud
 - ✅ DONE UAT1.1 When game start then I should see '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Game created'
+
+User Story 2: Step on the bomb
+As a user, I want to see when player steps on the bomb and game end message
+
+- ✅ DONE UAT2.1 When player steps on the bomb [1;1] then I should see '+-+-+-+\n| | | |\n+-+-+-+\n| |X| |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] BOOM! – Game Over.'
