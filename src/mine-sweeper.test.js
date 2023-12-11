@@ -18,4 +18,10 @@ describe('User Story 2: Step on the bomb', () => {
     let expectedBoard = '+-+-+-+\n|X| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] BOOM! – Game Over.';
     expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
   });
+  it('UAT2.3 When player steps on the bomb [2;0] then I should see "+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|X| | |\n+-+-+-+\n\n[Sandbox 3x3] BOOM! – Game Over."', () => {
+    let playerPick = [false, false, false, false, false, false, true, false, false];
+    let bombLocations = [false, false, false, false, false, false, true, false, false];
+    let expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|X| | |\n+-+-+-+\n\n[Sandbox 3x3] BOOM! – Game Over.';
+    expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
+  });
 });
