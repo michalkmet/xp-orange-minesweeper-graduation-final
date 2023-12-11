@@ -12,4 +12,4 @@ Pomodoro 1:
 
 - ✅ DONE Initial refactor - file names, description, function name, backlog.md
 - ✅ DONE Examples
-- ⚠ TODO User stories + UATs
+- ✅ DONE User stories + UATs

@@ -42,7 +42,7 @@ Example 2 - Game Over - Step on a bomb on 1;1
 [Sandbox 3x3] BOOM! – Game Over.
 ```
 
-Example 3 – Game Over - Step on a bomb on 0;1
+Example 3 – Game Over - Step on a bomb on 0;0
 
 ```
 +-+-+-+
