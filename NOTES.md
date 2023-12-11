@@ -10,6 +10,6 @@
 
 Pomodoro 1:
 
-- ⚠ TODO Initial refactor - file names, description, function name
+- 🚧 IN PROGRESS Initial refactor - file names, description, function name, backlog.md
 - ⚠ TODO Examples
 - ⚠ TODO User stories + UATs
