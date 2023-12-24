@@ -31,6 +31,8 @@ function createBoardMessage(playerPick, bombLocations) {
     boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
   } else if (playerPick[0] === true && bombLocations[1] === true) {
     boardMessage = '[Sandbox 3x3] 1 bomb around your square.';
+  } else if (playerPick[6] === true && bombLocations[3] === false) {
+    boardMessage = '[Sandbox 3x3] 2 bombs around your square.';
   } else {
     boardMessage = '[Sandbox 3x3] 3 bombs around your square.';
   }
@@ -42,9 +44,9 @@ function createBoardBody(playerPick, bombLocations) {
   let drawSymbolArr = [];
   for (let i = 0; i < 9; i++) {
     let drawSymbol = ' ';
-    console.log('i: ', i);
-    console.log('playerPick[i]: ', playerPick[i]);
-    console.log('bombLocations[i]: ', bombLocations[i]);
+    // console.log('i: ', i);
+    // console.log('playerPick[i]: ', playerPick[i]);
+    // console.log('bombLocations[i]: ', bombLocations[i]);
     if ((playerPick[i] === false) & (bombLocations[i] === false)) {
       drawSymbol = ' ';
     } else if ((playerPick[i] === true) & (bombLocations[i] === true)) {

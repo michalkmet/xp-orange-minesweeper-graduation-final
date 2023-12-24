@@ -68,3 +68,4 @@ Pomodoro 6:
 - 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
 - ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
 - ⚠ TODO Add more stories and UATs
+- ✅ DONE UAT3.3 When player clears square [2;0] and there are 2 bombs around then I should see '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bomb around your square.'

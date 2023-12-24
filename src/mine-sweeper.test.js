@@ -30,7 +30,7 @@ describe('User Story 2: Step on the bomb', () => {
 describe('User Story 3: Reveal the number of bombs around', () => {
   it('UAT3.1 When player clears square [2;0] and there are 3 bombs around then I should see "+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|3| | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square."', () => {
     let playerPick = [false, false, false, false, false, false, true, false, false];
-    let bombLocations = [false, false, false, false, true, true, false, true, false];
+    let bombLocations = [false, false, false, true, true, false, false, true, false];
     let expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|3| | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square.';
     expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
   });
@@ -38,6 +38,12 @@ describe('User Story 3: Reveal the number of bombs around', () => {
     let playerPick = [true, false, false, false, false, false, false, false, false];
     let bombLocations = [false, true, false, false, false, false, false, false, false];
     let expectedBoard = '+-+-+-+\n|1| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bomb around your square.';
+    expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
+  });
+  it('UAT3.3 When player clears square [2;0] and there are 2 bombs around then I should see "+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bomb around your square."', () => {
+    let playerPick = [false, false, false, false, false, false, true, false, false];
+    let bombLocations = [false, false, false, false, true, false, false, true, false];
+    let expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] 2 bombs around your square.';
     expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
   });
 });
