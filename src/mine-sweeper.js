@@ -12,8 +12,6 @@ function mineSweeper(playerPick, bombLocations) {
 }
 
 function createWholeBoard(playerPick, bombLocations) {
-  console.log(playerPick);
-  console.log(bombLocations);
   let board = '';
   let boardMessage = '';
 
@@ -40,19 +38,36 @@ function createBoardMessage(playerPick, bombLocations) {
 }
 
 function createBoardBody(playerPick, bombLocations) {
-  let boardBody;
-  if (playerPick[4] === true) {
-    boardBody = '+-+-+-+\n| | | |\n+-+-+-+\n| |X| |\n+-+-+-+\n| | | |\n+-+-+-+\n\n';
-  } else if (playerPick[0] === true && bombLocations[0] === true) {
-    boardBody = '+-+-+-+\n|X| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n';
-  } else if (playerPick[6] === true && !bombLocations[6]) {
-    boardBody = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|3| | |\n+-+-+-+\n\n';
-  } else if (playerPick[0] === true && !bombLocations[0]) {
-    boardBody = '+-+-+-+\n|1| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n';
-  } else {
-    boardBody = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|X| | |\n+-+-+-+\n\n';
+  let boardBody = '';
+  let drawSymbolArr = [];
+  for (let i = 0; i < 10; i++) {
+    let drawSymbol = ' ';
+    if ((playerPick[i] === false) & (bombLocations[i] === false)) {
+      drawSymbol = ' ';
+    } else if ((playerPick[i] === true) & (bombLocations[i] === true)) {
+      drawSymbol = 'X';
+    } else {
+      checkForBombsAround(i, playerPick, bombLocations);
+    }
+    drawSymbolArr.push(drawSymbol);
   }
+  boardBody += '+-+-+-+\n';
+  boardBody += '|' + drawSymbolArr[0] + '|' + drawSymbolArr[1] + '|' + drawSymbolArr[2] + '|\n';
+  boardBody += '+-+-+-+\n';
+  boardBody += '|' + drawSymbolArr[3] + '|' + drawSymbolArr[4] + '|' + drawSymbolArr[5] + '|\n';
+  boardBody += '+-+-+-+\n';
+  boardBody += '|' + drawSymbolArr[6] + '|' + drawSymbolArr[7] + '|' + drawSymbolArr[8] + '|\n';
+  boardBody += '+-+-+-+\n\n';
+
+  console.log(boardBody);
   return boardBody;
+}
+
+function checkForBombsAround(i, playerPick, bombLocations) {
+  console.log('checkForBombsAround');
+  console.log('i: ', i);
+  console.log('playerPick: ', playerPick);
+  console.log('bombLocations: ', bombLocations);
 }
 
 module.exports = mineSweeper;

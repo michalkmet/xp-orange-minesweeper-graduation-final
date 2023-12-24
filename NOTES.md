@@ -56,3 +56,9 @@ As a user, I want to see the number of bombs around when player reveals the squa
 - ⚠ TODO Refactor createBoardBody function - high complexity & duplicate code
 - ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
 - ⚠ TODO Add more stories and UATs
+
+Pomodoro 5:
+
+- 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
+- ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
+- ⚠ TODO Add more stories and UATs
