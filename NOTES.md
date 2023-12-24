@@ -62,3 +62,9 @@ Pomodoro 5:
 - 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
 - ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
 - ⚠ TODO Add more stories and UATs
+
+Pomodoro 6:
+
+- 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
+- ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
+- ⚠ TODO Add more stories and UATs
