@@ -40,7 +40,6 @@ function createBoardMessage(playerPick, bombLocations) {
 }
 
 function createBoardBody(playerPick, bombLocations) {
-  let boardBody = '';
   let drawSymbolArr = [];
   for (let i = 0; i < 9; i++) {
     let drawSymbol = ' ';
@@ -56,6 +55,12 @@ function createBoardBody(playerPick, bombLocations) {
     }
     drawSymbolArr.push(drawSymbol);
   }
+
+  return drawBoard(drawSymbolArr);
+}
+
+function drawBoard(drawSymbolArr) {
+  let boardBody = '';
   boardBody += '+-+-+-+\n';
   boardBody += '|' + drawSymbolArr[0] + '|' + drawSymbolArr[1] + '|' + drawSymbolArr[2] + '|\n';
   boardBody += '+-+-+-+\n';
@@ -63,128 +68,27 @@ function createBoardBody(playerPick, bombLocations) {
   boardBody += '+-+-+-+\n';
   boardBody += '|' + drawSymbolArr[6] + '|' + drawSymbolArr[7] + '|' + drawSymbolArr[8] + '|\n';
   boardBody += '+-+-+-+\n\n';
-
   console.log(boardBody);
   return boardBody;
 }
 
 function checkForBombsAround(i, playerPick, bombLocations) {
   console.log('checkForBombsAround');
+  console.log(i);
+  console.log(playerPick);
+  console.log(bombLocations);
+  // const coordinatesForBombsCheck = {
+  //   0: [1, 3, 4],
+  //   1: [0, 2, 3, 4, 5],
+  //   2: [1, 4, 5],
+  //   3: [0, 1, 4, 6, 7],
+  //   4: [0, 1, 2, 3, 5, 6, 7, 8],
+  //   5: [1, 2, 4, 7, 8],
+  //   6: [3, 4, 7],
+  //   7: [3, 4, 5, 6, 8],
+  //   8: [4, 5, 7],
+  // };
   let bombsCount = 0;
-  if (i === 0) {
-    if (bombLocations[1] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[3] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-  } else if (i === 1) {
-    if (bombLocations[0] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[2] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[3] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[5] === true) {
-      bombsCount++;
-    }
-  } else if (i === 2) {
-    if (bombLocations[1] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[5] === true) {
-      bombsCount++;
-    }
-  } else if (i === 3) {
-    if (bombLocations[0] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[1] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[6] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[7] === true) {
-      bombsCount++;
-    }
-  } else if (i === 4) {
-    for (let j = 0; j < 10; j++) {
-      if (j === i) {
-        continue;
-      }
-      if (bombLocations[j] === true) {
-        bombsCount++;
-      }
-    }
-  } else if (i === 5) {
-    if (bombLocations[1] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[2] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[7] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[8] === true) {
-      bombsCount++;
-    }
-  } else if (i === 6) {
-    if (bombLocations[3] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[7] === true) {
-      bombsCount++;
-    }
-  } else if (i === 7) {
-    if (bombLocations[3] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[5] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[6] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[8] === true) {
-      bombsCount++;
-    }
-  } else if (i === 8) {
-    if (bombLocations[4] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[5] === true) {
-      bombsCount++;
-    }
-    if (bombLocations[7] === true) {
-      bombsCount++;
-    }
-  }
   return bombsCount;
 }
 
