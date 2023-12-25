@@ -56,4 +56,11 @@ describe('User Story 4: flag the square', () => {
     let expectedBoard = '+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.';
     expect(mineSweeper(playerPick, bombLocations, playerPickType)).toBe(expectedBoard);
   });
+  it('UAT4.2 When player flags 2 squares as bombs [0;1,1;1] then I should see "+-+-+-+\n|*|*| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."', () => {
+    let playerPickType = 'flag';
+    let playerPick = [true, true, false, false, false, false, false, false, false];
+    let bombLocations = [true, false, false, false, false, false, false, false, false];
+    let expectedBoard = '+-+-+-+\n|*|*| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.';
+    expect(mineSweeper(playerPick, bombLocations, playerPickType)).toBe(expectedBoard);
+  });
 });

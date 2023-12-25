@@ -87,4 +87,4 @@ Pomodoro 9:
 
 - ⚠ TODO Add more stories and UATs
 - ✅ DONE UAT4.1 When player flags the square [0;1] as a bomb location then I should see '+-+-+-+\n|\*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.'
--
+- ✅ DONE UAT4.2 When player flags 2 squares as bombs [0;1,1;1] then I should see '+-+-+-+\n|_|_| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.'
