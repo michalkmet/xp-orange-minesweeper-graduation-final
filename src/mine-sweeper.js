@@ -1,7 +1,10 @@
 function mineSweeper(playerMove, bombLocations) {
   let board = '';
-  let playerPick = playerMove[playerPick];
-  let playerPickType = playerMove[playerPickType];
+  console.log('playerMove: ', playerMove);
+  let playerPick = playerMove.playerPick;
+  console.log('playerPick: ', playerPick);
+  let playerPickType = playerMove.playerPickType;
+  console.log('playerPickType: ', playerPickType);
   board = createWholeBoard(playerPick, bombLocations, playerPickType);
   console.log(board);
   return board;
@@ -12,7 +15,7 @@ function createWholeBoard(playerPick, bombLocations, playerPickType) {
   let boardMessage = '';
   let bombsAround = checkForBombsAround(bombLocations);
 
-  if (playerPick.length === 0) {
+  if (playerPick.includes(true) === false) {
     boardMessage = '[Sandbox 3x3] Game created';
     board = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n' + boardMessage;
   } else {
