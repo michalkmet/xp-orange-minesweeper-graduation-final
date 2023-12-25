@@ -25,15 +25,24 @@ function createBoardBody(playerPick, bombLocations, bombsAround) {
   let drawSymbolArr = [];
   for (let i = 0; i < 9; i++) {
     drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround);
-    if (drawSymbol === 'X') {
-      boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
-    } else if (drawSymbol != ' ') {
-      let bombsStr = bombsAround[i] > 1 ? drawSymbol + ' bombs' : drawSymbol + ' bomb';
-      boardMessage = '[Sandbox 3x3] ' + bombsStr + ' around your square.';
+    if (drawSymbol != ' ') {
+      boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
     }
     drawSymbolArr.push(drawSymbol);
   }
   return drawBoard(drawSymbolArr, boardMessage);
+}
+
+function createBoardMessage(drawSymbol, bombsAround) {
+  let boardMessage = '';
+  if (drawSymbol === 'X') {
+    boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
+  } else {
+    let bombsStr = bombsAround > 1 ? drawSymbol + ' bombs' : drawSymbol + ' bomb';
+    boardMessage = '[Sandbox 3x3] ' + bombsStr + ' around your square.';
+  }
+  console.log('boardMessage from createBoardMessage: ', boardMessage);
+  return boardMessage;
 }
 
 function createDrawSymbol(i, playerPick, bombLocation, bombsAround) {
@@ -55,7 +64,6 @@ function drawBoard(drawSymbolArr, boardMessage) {
   boardBody += '+-+-+-+\n\n';
   boardBody += boardMessage;
   console.log('boardMessage: ', boardMessage);
-  console.log('boardBody: ', boardBody);
   return boardBody;
 }
 
