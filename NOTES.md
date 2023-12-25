@@ -60,8 +60,6 @@ As a user, I want to see the number of bombs around when player reveals the squa
 Pomodoro 5:
 
 - 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
-- ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
-- ⚠ TODO Add more stories and UATs
 
 Pomodoro 6:
 
@@ -69,3 +67,11 @@ Pomodoro 6:
 - ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
 - ⚠ TODO Add more stories and UATs
 - ✅ DONE UAT3.3 When player clears square [2;0] and there are 2 bombs around then I should see '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bomb around your square.'
+
+Pomodoro 7:
+
+- 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
+- ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
+- ⚠ TODO Add more stories and UATs
+- 🚧 IN PROGRESS Refactor checkForBombsAround
+- ✅ DONE Removed createBoardMessage
