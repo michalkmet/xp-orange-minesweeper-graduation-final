@@ -1,5 +1,7 @@
-function mineSweeper(playerPick, bombLocations, playerPickType = 'Reveal') {
+function mineSweeper(playerMove, bombLocations) {
   let board = '';
+  let playerPick = playerMove[playerPick];
+  let playerPickType = playerMove[playerPickType];
   board = createWholeBoard(playerPick, bombLocations, playerPickType);
   console.log(board);
   return board;
