@@ -19,39 +19,29 @@ function createWholeBoard(playerPick, bombLocations) {
   return board;
 }
 
-// function createBoardMessage(playerPick, bombLocations, bombsAround) {
-//   let boardMessage = '';
-//   if (playerPick.toString() === bombLocations.toString()) {
-//     boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
-//   } else if (playerPick[0] === true && bombLocations[1] === true) {
-//     boardMessage = '[Sandbox 3x3] 1 bomb around your square.';
-//   } else if (playerPick[6] === true && bombLocations[3] === false) {
-//     boardMessage = '[Sandbox 3x3] 2 bombs around your square.';
-//   } else {
-//     boardMessage = '[Sandbox 3x3] 3 bombs around your square.';
-//   }
-//   return boardMessage;
-// }
-
 function createBoardBody(playerPick, bombLocations, bombsAround) {
   let boardMessage = '';
+  let drawSymbol = ' ';
   let drawSymbolArr = [];
   for (let i = 0; i < 9; i++) {
-    let drawSymbol = ' ';
-    if ((playerPick[i] === false) & (bombLocations[i] === false)) {
-      drawSymbol = ' ';
-    } else if ((playerPick[i] === true) & (bombLocations[i] === true)) {
-      drawSymbol = 'X';
+    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround);
+    if (drawSymbol === 'X') {
       boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
-    } else if (playerPick[i] === true) {
-      drawSymbol = '' + bombsAround[i];
-      let bombsStr = bombsAround[i] > 1 ? bombsAround[i] + ' bombs' : bombsAround[i] + ' bomb';
+    } else if (drawSymbol != ' ') {
+      let bombsStr = bombsAround[i] > 1 ? drawSymbol + ' bombs' : drawSymbol + ' bomb';
       boardMessage = '[Sandbox 3x3] ' + bombsStr + ' around your square.';
     }
     drawSymbolArr.push(drawSymbol);
   }
-
   return drawBoard(drawSymbolArr, boardMessage);
+}
+
+function createDrawSymbol(i, playerPick, bombLocation, bombsAround) {
+  let drawSymbol = ' ';
+  if (playerPick === true) {
+    drawSymbol = bombLocation === true ? 'X' : '' + bombsAround[i];
+  }
+  return drawSymbol;
 }
 
 function drawBoard(drawSymbolArr, boardMessage) {
@@ -64,7 +54,8 @@ function drawBoard(drawSymbolArr, boardMessage) {
   boardBody += '|' + drawSymbolArr[6] + '|' + drawSymbolArr[7] + '|' + drawSymbolArr[8] + '|\n';
   boardBody += '+-+-+-+\n\n';
   boardBody += boardMessage;
-  console.log(boardBody);
+  console.log('boardMessage: ', boardMessage);
+  console.log('boardBody: ', boardBody);
   return boardBody;
 }
 

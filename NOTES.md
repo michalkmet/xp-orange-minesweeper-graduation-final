@@ -71,7 +71,13 @@ Pomodoro 6:
 Pomodoro 7:
 
 - 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
-- ⚠ TODO Refactor createBoardMessage function - high complexity & duplicate code
 - ⚠ TODO Add more stories and UATs
 - 🚧 IN PROGRESS Refactor checkForBombsAround
 - ✅ DONE Removed createBoardMessage
+
+Pomodoro 8:
+
+- 🚧 IN PROGRESS Refactor createBoardBody function - high complexity & duplicate code
+- ⚠ TODO Add more stories and UATs
+- 🚧 IN PROGRESS Refactor checkForBombsAround
+- ✅ DONE Refactor createDrawSymbol
