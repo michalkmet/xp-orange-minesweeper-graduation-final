@@ -108,9 +108,9 @@ As a user, I want to see the number of bombs around when player reveals the squa
 ```
 
 User Story 4: flag the square
-As a user, I want to see the \* on the square when player decided to flag square as potentional bomb location and appropriate message
+As a user, I want to see the \* on the square when player decided to flag square as a bomb location and appropriate message
 
-- ⚠ TODO UAT4.1 When player flags the square [0;1] as a potentional bomb location then I should see '
+- ⚠ TODO UAT4.1 When player flags the square [0;1] as a bomb location then I should see '
 
 ```
 +-+-+-+

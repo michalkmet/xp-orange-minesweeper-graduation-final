@@ -1,11 +1,11 @@
-function mineSweeper(playerPick, bombLocations) {
+function mineSweeper(playerPick, bombLocations, playerPickType = 'Reveal') {
   let board = '';
-  board = createWholeBoard(playerPick, bombLocations);
+  board = createWholeBoard(playerPick, bombLocations, playerPickType);
   console.log(board);
   return board;
 }
 
-function createWholeBoard(playerPick, bombLocations) {
+function createWholeBoard(playerPick, bombLocations, playerPickType) {
   let board = '';
   let boardMessage = '';
   let bombsAround = checkForBombsAround(bombLocations);
@@ -14,17 +14,17 @@ function createWholeBoard(playerPick, bombLocations) {
     boardMessage = '[Sandbox 3x3] Game created';
     board = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n' + boardMessage;
   } else {
-    board = createBoardBody(playerPick, bombLocations, bombsAround);
+    board = createBoardBody(playerPickType, playerPick, bombLocations, bombsAround);
   }
   return board;
 }
 
-function createBoardBody(playerPick, bombLocations, bombsAround) {
+function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround) {
   let boardMessage = '';
   let drawSymbol = ' ';
   let drawSymbolArr = [];
   for (let i = 0; i < 9; i++) {
-    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround);
+    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
     if (drawSymbol != ' ') {
       boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
     }
@@ -37,6 +37,8 @@ function createBoardMessage(drawSymbol, bombsAround) {
   let boardMessage = '';
   if (drawSymbol === 'X') {
     boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
+  } else if (drawSymbol === '*') {
+    boardMessage = '[Sandbox 3x3] Square flagged as bomb.';
   } else {
     let bombsStr = bombsAround > 1 ? drawSymbol + ' bombs' : drawSymbol + ' bomb';
     boardMessage = '[Sandbox 3x3] ' + bombsStr + ' around your square.';
@@ -45,10 +47,14 @@ function createBoardMessage(drawSymbol, bombsAround) {
   return boardMessage;
 }
 
-function createDrawSymbol(i, playerPick, bombLocation, bombsAround) {
+function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickType) {
   let drawSymbol = ' ';
   if (playerPick === true) {
-    drawSymbol = bombLocation === true ? 'X' : '' + bombsAround[i];
+    if (playerPickType === 'flag') {
+      drawSymbol = '*';
+    } else {
+      drawSymbol = bombLocation === true ? 'X' : '' + bombsAround[i];
+    }
   }
   return drawSymbol;
 }

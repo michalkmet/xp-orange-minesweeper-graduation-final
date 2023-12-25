@@ -82,3 +82,9 @@ Pomodoro 8:
 - 🚧 IN PROGRESS Refactor checkForBombsAround
 - ✅ DONE Refactor createDrawSymbol
 - ✅ DONE new User story + UATs
+
+Pomodoro 9:
+
+- ⚠ TODO Add more stories and UATs
+- ✅ DONE UAT4.1 When player flags the square [0;1] as a bomb location then I should see '+-+-+-+\n|\*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.'
+-

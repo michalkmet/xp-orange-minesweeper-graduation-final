@@ -47,3 +47,13 @@ describe('User Story 3: Reveal the number of bombs around', () => {
     expect(mineSweeper(playerPick, bombLocations)).toBe(expectedBoard);
   });
 });
+
+describe('User Story 4: flag the square', () => {
+  it('UAT4.1 When player flags the square [0;1] as a bomb location then I should see "+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."', () => {
+    let playerPickType = 'flag';
+    let playerPick = [true, false, false, false, false, false, false, false, false];
+    let bombLocations = [true, false, false, false, false, false, false, false, false];
+    let expectedBoard = '+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.';
+    expect(mineSweeper(playerPick, bombLocations, playerPickType)).toBe(expectedBoard);
+  });
+});
