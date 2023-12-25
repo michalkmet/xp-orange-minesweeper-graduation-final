@@ -81,3 +81,4 @@ Pomodoro 8:
 - ⚠ TODO Add more stories and UATs
 - 🚧 IN PROGRESS Refactor checkForBombsAround
 - ✅ DONE Refactor createDrawSymbol
+- ✅ DONE new User story + UATs

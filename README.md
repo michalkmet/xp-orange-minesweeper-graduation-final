@@ -140,7 +140,7 @@ Example 9 – Mark the bombs around – What I expect after I marked the 2 squar
 [Sandbox 3x3] Square flagged as bomb.
 ```
 
-Example 10 – Mark the bombs around – What I expect after I marked the 2 squares as bombs [1;0 + 1;1 + 2;1]
+Example 10 – Mark the bombs around – What I expect after I reveal the [2;0] and then marked the 3 squares as bombs [1;0 + 1;1 + 2;1]
 
 ```
 +-+-+-+

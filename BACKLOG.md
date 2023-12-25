@@ -106,3 +106,48 @@ As a user, I want to see the number of bombs around when player reveals the squa
 
 [Sandbox 3x3] 2 bombs around your square.
 ```
+
+User Story 4: flag the square
+As a user, I want to see the \* on the square when player decided to flag square as potentional bomb location and appropriate message
+
+- ⚠ TODO UAT4.1 When player flags the square [0;1] as a potentional bomb location then I should see '
+
+```
++-+-+-+
+|*| | |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+
+[Sandbox 3x3] Square flagged as bomb.
+```
+
+- ⚠ TODO UAT4.2 When player flags 2 squares as bombs [0;1,1;1] then I should see '
+
+```
++-+-+-+
+|*|*| |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+
+[Sandbox 3x3] Square flagged as bomb.
+```
+
+- ⚠ TODO UAT4.3 When player reveal the [2;0] and then flags 3 squares as bombs [1;0 + 1;1 + 2;1] then I should see '
+
+```
++-+-+-+
+| | | |
++-+-+-+
+|*|*| |
++-+-+-+
+|3|*| |
++-+-+-+
+
+[Sandbox 3x3] Square flagged as bomb.
+```
