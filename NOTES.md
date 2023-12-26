@@ -104,3 +104,4 @@ Pomodoro 11:
 - ⚠ TODO Add more stories and UATs
 - 🚧 IN PROGRESS find the way how to save board
 - ✅ DONE use previousBoard in createBoardBody function
+- ✅ DONE Refactor all tests
