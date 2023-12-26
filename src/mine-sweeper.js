@@ -29,22 +29,32 @@ function createWholeBoard(playerPick, bombLocations, playerPickType, previousBoa
 
 function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround, previousBoard) {
   let boardMessage = '';
-  let drawSymbol = ' ';
   let emptyBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+  let boardMessageArr = [];
   let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
   console.log('drawSymbolArr1: ', drawSymbolArr);
   for (let i = 0; i < 9; i++) {
     console.log(drawSymbolArr[i]);
-    if (drawSymbolArr[i] === ' ') {
-      drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
-      if (drawSymbol != ' ') {
-        boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
-      }
-      drawSymbolArr[i] = drawSymbol;
+    [drawSymbolArr, boardMessage] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround);
+    if (boardMessage != '') {
+      boardMessageArr.push(boardMessage);
     }
   }
-  console.log('drawSymbolArr: ', drawSymbolArr);
-  return drawBoard(drawSymbolArr, boardMessage);
+  return drawBoard(drawSymbolArr, boardMessageArr[0]);
+}
+
+function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround) {
+  let drawSymbol = ' ';
+  let boardMessage = '';
+  if (drawSymbolArr[i] === ' ') {
+    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
+    console.log('drawSymbol: ', drawSymbol);
+    if (drawSymbol != ' ') {
+      boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
+    }
+    drawSymbolArr[i] = drawSymbol;
+  }
+  return [drawSymbolArr, boardMessage];
 }
 
 function createBoardMessage(drawSymbol, bombsAround) {

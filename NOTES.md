@@ -105,3 +105,4 @@ Pomodoro 11:
 - 🚧 IN PROGRESS find the way how to save board
 - ✅ DONE use previousBoard in createBoardBody function
 - ✅ DONE Refactor all tests
+- 🚧 IN PROGRESS Refactor createBoardBody because of complexity 6
