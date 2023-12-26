@@ -151,3 +151,20 @@ As a user, I want to see the \* on the square when player decided to flag square
 
 [Sandbox 3x3] Square flagged as bomb.
 ```
+
+User Story 5: Victory
+As a user, I want to see the victory message and cleared board when player win
+
+- ⚠ TODO UAT5.1 When player reveal the [2;0 + 0;0 + 0;1 + 0;2 + 2;2 + 1;2] and win the game then I should see '
+
+```
++-+-+-+
+|2|2|1|
++-+-+-+
+|*|*|2|
++-+-+-+
+|3|*|2|
++-+-+-+
+
+[Sandbox 3x3] the land is cleared! GOOD JOB!
+```

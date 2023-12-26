@@ -154,7 +154,7 @@ Example 10 – Mark the bombs around – What I expect after I reveal the [2;0] 
 [Sandbox 3x3] Square flagged as bomb.
 ```
 
-Example 11 – Game Victory – After I cleared the all the squares [2;0 + 0;1 + 2;2 + 1;2]
+Example 11 – Game Victory – After I cleared the all the squares [2;0 + 0;0 + 0;1 + 0;2 + 2;2 + 1;2]
 
 ```
 +-+-+-+
