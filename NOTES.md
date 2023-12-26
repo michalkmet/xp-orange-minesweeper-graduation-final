@@ -96,3 +96,5 @@ Pomodoro 10:
 - ⚠ TODO Add more stories and UATs
 - 🚧 IN PROGRESS UAT4.3 When player reveal the [2;0] and then flags 3 squares as bombs [1;0 + 1;1 + 2;1] then I should see '+-+-+-+\n| | | |\n+-+-+-+\n|_|_| |\n+-+-+-+\n|3|\*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.'
 - ✅ DONE update tests
+- 🚧 IN PROGRESS find the way how to save board
+- ⚠ TODO use previousBoard in createBoardBody function

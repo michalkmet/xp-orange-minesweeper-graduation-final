@@ -87,7 +87,7 @@ describe('User Story 3: Reveal the number of bombs around', () => {
 
 describe('User Story 4: flag the square', () => {
   it('UAT4.1 When player flags the square [0;1] as a bomb location then I should see "+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."', () => {
-    let playerPickType = 'flag';
+    let playerPickType = 'Flag';
     let playerPick = [true, false, false, false, false, false, false, false, false];
     let bombLocations = [true, false, false, false, false, false, false, false, false];
     let playerMove = {
@@ -98,7 +98,7 @@ describe('User Story 4: flag the square', () => {
     expect(mineSweeper(playerMove, bombLocations)).toBe(expectedBoard);
   });
   it('UAT4.2 When player flags 2 squares as bombs [0;1,1;1] then I should see "+-+-+-+\n|*|*| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."', () => {
-    let playerPickType = 'flag';
+    let playerPickType = 'Flag';
     let playerPick = [true, true, false, false, false, false, false, false, false];
     let bombLocations = [true, false, false, false, false, false, false, false, false];
     let playerMove = {
@@ -109,14 +109,26 @@ describe('User Story 4: flag the square', () => {
     expect(mineSweeper(playerMove, bombLocations)).toBe(expectedBoard);
   });
   it('UAT4.3 When player reveal the [2;0] and then flags 3 squares as bombs [1;0 + 1;1 + 2;1] then I should see "+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."', () => {
-    let playerPickType = 'flag';
+    let board = '';
+    let drawSymbolArr = [];
+    let playerPickType = 'Reveal';
     let playerPick = [false, false, false, false, false, false, true, false, false];
     let bombLocations = [false, false, false, true, true, false, false, true, false];
     let playerMove = {
       playerPickType: playerPickType,
       playerPick: playerPick,
     };
-    let expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.';
-    expect(mineSweeper(playerMove, bombLocations)).toBe(expectedBoard);
+    let expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|3| | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square.';
+    [board, drawSymbolArr] = mineSweeper(playerMove, bombLocations);
+    expect(board).toBe(expectedBoard);
+
+    playerPick = [false, false, false, true, true, false, false, true, false];
+    playerPickType = 'Flag';
+    playerMove = {
+      playerPickType: playerPickType,
+      playerPick: playerPick,
+    };
+    expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.';
+    expect(mineSweeper(playerMove, bombLocations, drawSymbolArr)).toBe(expectedBoard);
   });
 });
