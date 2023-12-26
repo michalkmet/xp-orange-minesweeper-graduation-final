@@ -98,3 +98,9 @@ Pomodoro 10:
 - ✅ DONE update tests
 - 🚧 IN PROGRESS find the way how to save board
 - ⚠ TODO use previousBoard in createBoardBody function
+
+Pomodoro 11:
+
+- ⚠ TODO Add more stories and UATs
+- 🚧 IN PROGRESS find the way how to save board
+- ✅ DONE use previousBoard in createBoardBody function

@@ -30,14 +30,18 @@ function createWholeBoard(playerPick, bombLocations, playerPickType, previousBoa
 function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround, previousBoard) {
   let boardMessage = '';
   let drawSymbol = ' ';
-  let drawSymbolArr = previousBoard;
+  let emptyBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+  let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
   console.log('drawSymbolArr1: ', drawSymbolArr);
   for (let i = 0; i < 9; i++) {
-    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
-    if (drawSymbol != ' ') {
-      boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
+    console.log(drawSymbolArr[i]);
+    if (drawSymbolArr[i] === ' ') {
+      drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
+      if (drawSymbol != ' ') {
+        boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
+      }
+      drawSymbolArr[i] = drawSymbol;
     }
-    drawSymbolArr[i] = drawSymbol;
   }
   console.log('drawSymbolArr: ', drawSymbolArr);
   return drawBoard(drawSymbolArr, boardMessage);

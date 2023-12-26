@@ -129,6 +129,7 @@ describe('User Story 4: flag the square', () => {
       playerPick: playerPick,
     };
     expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.';
-    expect(mineSweeper(playerMove, bombLocations, drawSymbolArr)).toBe(expectedBoard);
+    [board, drawSymbolArr] = mineSweeper(playerMove, bombLocations, drawSymbolArr);
+    expect(board).toBe(expectedBoard);
   });
 });
