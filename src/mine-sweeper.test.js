@@ -144,3 +144,28 @@ describe('User Story 4: flag the square', () => {
     expect(board).toBe(expectedBoard);
   });
 });
+
+describe('User Story 5: Victory', () => {
+  it('UAT5.1 When player reveal the [2;0 + 0;0 + 0;1 + 0;2 + 2;2 + 1;2] and win the game then I should see "+-+-+-+\n|2|2|1|\n+-+-+-+\n|*|*|2|\n+-+-+-+\n|3|*|2|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!"', () => {
+    let playerPickType = 'Reveal';
+    let playerPick = [false, false, false, false, false, false, true, false, false];
+    let bombLocations = [false, false, false, true, true, false, false, true, false];
+    let playerMove = {
+      playerPickType: playerPickType,
+      playerPick: playerPick,
+    };
+    let expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|3| | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square.';
+    [board, drawSymbolArr] = mineSweeper(playerMove, bombLocations);
+    expect(board).toBe(expectedBoard);
+
+    playerPick = [false, false, false, true, true, false, false, true, false];
+    playerPickType = 'Flag';
+    playerMove = {
+      playerPickType: playerPickType,
+      playerPick: playerPick,
+    };
+    expectedBoard = '+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.';
+    [board, drawSymbolArr] = mineSweeper(playerMove, bombLocations, drawSymbolArr);
+    expect(board).toBe(expectedBoard);
+  });
+});

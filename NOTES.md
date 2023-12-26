@@ -106,3 +106,5 @@ Pomodoro 11:
 - ✅ DONE use previousBoard in createBoardBody function
 - ✅ DONE Refactor all tests
 - 🚧 IN PROGRESS Refactor createBoardBody because of complexity 6
+- ✅ DONE new user story
+- 🚧 IN PROGRESS UAT5.1 UAT5.1 When player reveal the [2;0 + 0;0 + 0;1 + 0;2 + 2;2 + 1;2] and win the game then I should see '+-+-+-+\n|2|2|1|\n+-+-+-+\n|_|_|2|\n+-+-+-+\n|3|\*|2|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'
