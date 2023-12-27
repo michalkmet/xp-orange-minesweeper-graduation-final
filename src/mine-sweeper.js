@@ -34,7 +34,6 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
   let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
   console.log('drawSymbolArr1: ', drawSymbolArr);
   for (let i = 0; i < 9; i++) {
-    console.log(drawSymbolArr[i]);
     [drawSymbolArr, boardMessage] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround);
     if (boardMessage != '') {
       boardMessageArr.push(boardMessage);
@@ -48,7 +47,6 @@ function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick,
   let boardMessage = '';
   if (drawSymbolArr[i] === ' ') {
     drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
-    console.log('drawSymbol: ', drawSymbol);
     if (drawSymbol != ' ') {
       boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
     }
@@ -67,7 +65,6 @@ function createBoardMessage(drawSymbol, bombsAround) {
     let bombsStr = bombsAround > 1 ? drawSymbol + ' bombs' : drawSymbol + ' bomb';
     boardMessage = '[Sandbox 3x3] ' + bombsStr + ' around your square.';
   }
-  console.log('boardMessage from createBoardMessage: ', boardMessage);
   return boardMessage;
 }
 
@@ -92,8 +89,11 @@ function drawBoard(drawSymbolArr, boardMessage) {
   boardBody += '+-+-+-+\n';
   boardBody += '|' + drawSymbolArr[6] + '|' + drawSymbolArr[7] + '|' + drawSymbolArr[8] + '|\n';
   boardBody += '+-+-+-+\n\n';
+
+  if (!drawSymbolArr.includes(' ')) {
+    boardMessage = '[Sandbox 3x3] the land is cleared! GOOD JOB!';
+  }
   boardBody += boardMessage;
-  console.log('boardMessage: ', boardMessage);
   return [boardBody, drawSymbolArr];
 }
 
