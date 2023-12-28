@@ -112,11 +112,13 @@ Pomodoro 11:
 Pomodoro 12:
 
 - ✅ DONE UAT5.1 UAT5.1 When player reveal the [2;0 + 0;0 + 0;1 + 0;2 + 2;2 + 1;2] and win the game then I should see '+-+-+-+\n|2|2|1|\n+-+-+-+\n|_|_|2|\n+-+-+-+\n|3|\*|2|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'
-- 🚧 TODO Refactor createBoardBody - complexity
-- 🚧 TODO Refactor createBoardMessage - complexity
-- 🚧 TODO Refactor createDrawSymbol - complexity
-- 🚧 TODO Refactor checkForBombsAround - complexity
+- ⚠ TODO Refactor createBoardBody - complexity
+- ⚠ TODO Refactor createBoardMessage - complexity
+- ⚠ TODO Refactor createDrawSymbol - complexity
+- ⚠ TODO Refactor checkForBombsAround - complexity
 
 Pomodoro 13:
 
 - ✅ DONE Add more stories and UATs
+- ⚠ TODO UAT6.1 When player reveal the [0;0] and bomb is at [0;2] then I should see
+  '+-+-+-+\n|_|1| |\n+-+-+-+\n|_|1|1|\n+-+-+-+\n|_|_|\_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'

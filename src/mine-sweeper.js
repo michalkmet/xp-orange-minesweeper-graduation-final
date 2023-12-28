@@ -17,6 +17,7 @@ function createWholeBoard(playerPick, bombLocations, playerPickType, previousBoa
   let boardMessage = '';
   let drawSymbolArr = [];
   let bombsAround = checkForBombsAround(bombLocations);
+  console.log('bombsAround: ', bombsAround);
 
   if (playerPick.includes(true) === false) {
     boardMessage = '[Sandbox 3x3] Game created';
@@ -35,6 +36,7 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
   console.log('drawSymbolArr1: ', drawSymbolArr);
   for (let i = 0; i < 9; i++) {
     [drawSymbolArr, boardMessage] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround);
+    // console.log('drawSymbolArr: ', drawSymbolArr);
     if (boardMessage != '') {
       boardMessageArr.push(boardMessage);
     }
@@ -47,7 +49,11 @@ function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick,
   let boardMessage = '';
   if (drawSymbolArr[i] === ' ') {
     drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
-    if (drawSymbol != ' ') {
+    if (drawSymbol === '_') {
+      // TODO - we need to check neighbors
+    }
+
+    if (drawSymbol != ' ' || drawSymbol != '_') {
       boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
     }
     drawSymbolArr[i] = drawSymbol;
@@ -118,7 +124,7 @@ function checkForBombsAround(bombLocations) {
         bombCount++;
       }
     }
-    bombsAround[i] = bombCount;
+    bombsAround[i] = bombCount === 0 ? '_' : bombCount;
   }
   return bombsAround;
 }
