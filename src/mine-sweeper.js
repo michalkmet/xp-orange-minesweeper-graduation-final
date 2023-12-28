@@ -111,7 +111,6 @@ function createBoardMessage(drawSymbol, bombsAround) {
 }
 
 function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickType, autoReveal) {
-  console.log('createDrawSymbol');
   let drawSymbol = ' ';
   if (playerPick === true) {
     if (playerPickType === 'Flag') {
