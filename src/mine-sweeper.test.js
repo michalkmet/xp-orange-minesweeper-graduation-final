@@ -265,4 +265,16 @@ describe('User Story 6: Automatic square opening', () => {
     [board, drawSymbolArr] = mineSweeper(playerMove, bombLocations);
     expect(board).toBe(expectedBoard);
   });
+  it('UAT6.3 When player reveal the [2;2] and bomb is at [2,0] then I should see "+-+-+-+\n|_|_|_|\n+-+-+-+\n|1|1|_|\n+-+-+-+\n| |1|_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!"', () => {
+    let playerPickType = 'Reveal';
+    let playerPick = [false, false, false, false, false, false, false, false, true];
+    let bombLocations = [false, false, false, false, false, false, true, false, false];
+    let playerMove = {
+      playerPickType: playerPickType,
+      playerPick: playerPick,
+    };
+    let expectedBoard = '+-+-+-+\n|_|_|_|\n+-+-+-+\n|1|1|_|\n+-+-+-+\n| |1|_|\n+-+-+-+\n\nSandbox 3x3] the land is cleared! GOOD JOB!';
+    [board, drawSymbolArr] = mineSweeper(playerMove, bombLocations);
+    expect(board).toBe(expectedBoard);
+  });
 });
