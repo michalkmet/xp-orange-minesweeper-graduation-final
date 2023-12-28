@@ -1,3 +1,15 @@
+const coordinatesForBombsCheck = {
+  0: [1, 3, 4],
+  1: [0, 2, 3, 4, 5],
+  2: [1, 4, 5],
+  3: [0, 1, 4, 6, 7],
+  4: [0, 1, 2, 3, 5, 6, 7, 8],
+  5: [1, 2, 4, 7, 8],
+  6: [3, 4, 7],
+  7: [3, 4, 5, 6, 8],
+  8: [4, 5, 7],
+};
+
 function mineSweeper(playerMove, bombLocations, previousBoard = []) {
   let board = '';
   let drawSymbolArr = [];
@@ -17,7 +29,7 @@ function createWholeBoard(playerPick, bombLocations, playerPickType, previousBoa
   let boardMessage = '';
   let drawSymbolArr = [];
   let bombsAround = checkForBombsAround(bombLocations);
-  console.log('bombsAround: ', bombsAround);
+  // console.log('bombsAround: ', bombsAround);
 
   if (playerPick.includes(true) === false) {
     boardMessage = '[Sandbox 3x3] Game created';
@@ -32,11 +44,13 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
   let boardMessage = '';
   let emptyBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
   let boardMessageArr = [];
+  let autoReveal = false;
   let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
-  console.log('drawSymbolArr1: ', drawSymbolArr);
+  // console.log('drawSymbolArr1: ', drawSymbolArr);
   for (let i = 0; i < 9; i++) {
-    [drawSymbolArr, boardMessage] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround);
+    [drawSymbolArr, boardMessage, autoReveal] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal);
     // console.log('drawSymbolArr: ', drawSymbolArr);
+    console.log('boardMessage: ', boardMessage);
     if (boardMessage != '') {
       boardMessageArr.push(boardMessage);
     }
@@ -44,24 +58,50 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
   return drawBoard(drawSymbolArr, boardMessageArr[0]);
 }
 
-function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround) {
+function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal) {
   let drawSymbol = ' ';
   let boardMessage = '';
+  // console.log('i: ', i);
+  // console.log('check If drawSymbolArr[i] is empty: ', drawSymbolArr[i]);
   if (drawSymbolArr[i] === ' ') {
-    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType);
+    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType, autoReveal);
+    // console.log('createDrawSymbol drawSymbol: ', drawSymbol);
     if (drawSymbol === '_') {
       // TODO - we need to check neighbors
+      drawSymbolArr = revealNeighbors(i, drawSymbolArr, bombsAround);
+      autoReveal = true;
+      // console.log('drawSymbolArr!: ', drawSymbolArr);
     }
-
-    if (drawSymbol != ' ' || drawSymbol != '_') {
+    if (drawSymbol != ' ' && drawSymbol != '_') {
       boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
     }
     drawSymbolArr[i] = drawSymbol;
   }
-  return [drawSymbolArr, boardMessage];
+  return [drawSymbolArr, boardMessage, autoReveal];
+}
+
+function revealNeighbors(i, drawSymbolArr, bombsAround) {
+  // TODO we need to find the way how to do it recursively
+  console.log('revealNeighbors');
+  // console.log('coordinates: ', coordinatesForBombsCheck);
+  // console.log('bombsAround: ', bombsAround);
+  // console.log('drawSymbolArr: ', drawSymbolArr);
+  let checkForCoordinates = coordinatesForBombsCheck[i];
+  // console.log('checkForCoordinates: ', checkForCoordinates);
+  for (let j = 0; j < checkForCoordinates.length; j++) {
+    // console.log('checkForCoordinates[j]: ', checkForCoordinates[j]);
+    // console.log('bombsAround[checkForCoordinates[j]]: ', bombsAround[checkForCoordinates[j]]);
+
+    drawSymbolArr[checkForCoordinates[j]] = bombsAround[checkForCoordinates[j]];
+    // console.log('drawSymbolArr[checkForCoordinates[j]]: ', drawSymbolArr[checkForCoordinates[j]]);
+  }
+  console.log('drawSymbolArr from revealNeighbors: ', drawSymbolArr);
+  return drawSymbolArr;
 }
 
 function createBoardMessage(drawSymbol, bombsAround) {
+  console.log('createBoardMessage');
+  console.log('drawSymbol: ', drawSymbol);
   let boardMessage = '';
   if (drawSymbol === 'X') {
     boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
@@ -74,7 +114,8 @@ function createBoardMessage(drawSymbol, bombsAround) {
   return boardMessage;
 }
 
-function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickType) {
+function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickType, autoReveal) {
+  console.log('createDrawSymbol');
   let drawSymbol = ' ';
   if (playerPick === true) {
     if (playerPickType === 'Flag') {
@@ -82,6 +123,8 @@ function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickTy
     } else {
       drawSymbol = bombLocation === true ? 'X' : '' + bombsAround[i];
     }
+  } else if (autoReveal === true) {
+    drawSymbol = '' + bombsAround[i];
   }
   return drawSymbol;
 }
@@ -105,17 +148,7 @@ function drawBoard(drawSymbolArr, boardMessage) {
 
 function checkForBombsAround(bombLocations) {
   let bombsAround = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  const coordinatesForBombsCheck = {
-    0: [1, 3, 4],
-    1: [0, 2, 3, 4, 5],
-    2: [1, 4, 5],
-    3: [0, 1, 4, 6, 7],
-    4: [0, 1, 2, 3, 5, 6, 7, 8],
-    5: [1, 2, 4, 7, 8],
-    6: [3, 4, 7],
-    7: [3, 4, 5, 6, 8],
-    8: [4, 5, 7],
-  };
+  let bombCountSymbol = '';
   for (let i = 0; i < 9; i++) {
     let checkForCoordinates = coordinatesForBombsCheck[i];
     let bombCount = 0;
@@ -124,7 +157,19 @@ function checkForBombsAround(bombLocations) {
         bombCount++;
       }
     }
-    bombsAround[i] = bombCount === 0 ? '_' : bombCount;
+
+    if (bombLocations[i] === true) {
+      bombCountSymbol = ' ';
+    } else {
+      if (bombCount === 0) {
+        bombCountSymbol = '_';
+      } else {
+        bombCountSymbol = bombCount;
+      }
+    }
+    bombsAround[i] = bombCountSymbol;
+
+    // console.log('bombsAround[i]: ', bombsAround[i]);
   }
   return bombsAround;
 }
