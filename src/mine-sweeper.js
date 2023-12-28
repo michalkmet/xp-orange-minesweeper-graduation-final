@@ -13,12 +13,8 @@ const coordinatesForBombsCheck = {
 function mineSweeper(playerMove, bombLocations, previousBoard = []) {
   let board = '';
   let drawSymbolArr = [];
-  // console.log('playerMove: ', playerMove);
   let playerPick = playerMove.playerPick;
-  // console.log('playerPick: ', playerPick);
   let playerPickType = playerMove.playerPickType;
-  // console.log('playerPickType: ', playerPickType);
-  console.log('previousBoard: ', previousBoard);
   [board, drawSymbolArr] = createWholeBoard(playerPick, bombLocations, playerPickType, previousBoard);
   console.log(board);
   return [board, drawSymbolArr];
@@ -29,7 +25,6 @@ function createWholeBoard(playerPick, bombLocations, playerPickType, previousBoa
   let boardMessage = '';
   let drawSymbolArr = [];
   let bombsAround = checkForBombsAround(bombLocations);
-  // console.log('bombsAround: ', bombsAround);
 
   if (playerPick.includes(true) === false) {
     boardMessage = '[Sandbox 3x3] Game created';
@@ -46,31 +41,44 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
   let boardMessageArr = [];
   let autoReveal = false;
   let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
-  // console.log('drawSymbolArr1: ', drawSymbolArr);
   for (let i = 0; i < 9; i++) {
     [drawSymbolArr, boardMessage, autoReveal] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal);
-    // console.log('drawSymbolArr: ', drawSymbolArr);
-    console.log('boardMessage: ', boardMessage);
     if (boardMessage != '') {
       boardMessageArr.push(boardMessage);
     }
   }
-  return drawBoard(drawSymbolArr, boardMessageArr[0]);
+  if (checkIfWon(bombLocations, drawSymbolArr, autoReveal)) {
+    boardMessageArr[0] = '[Sandbox 3x3] the land is cleared! GOOD JOB!';
+  }
+  return drawBoard(drawSymbolArr, boardMessageArr[0], autoReveal);
+}
+
+function checkIfWon(bombLocations, drawSymbolArr, autoReveal) {
+  let result = false;
+  let bombsCountTotal = 0;
+  let bombsCountInBoardTotal = 0;
+  for (let j = 0; j < 9; j++) {
+    if (bombLocations[j] === true) {
+      bombsCountTotal++;
+    }
+    if (drawSymbolArr[j] === ' ') {
+      bombsCountInBoardTotal++;
+    }
+  }
+  if ((autoReveal && bombsCountTotal === bombsCountInBoardTotal) || bombsCountInBoardTotal === 0) {
+    result = true;
+  }
+  return result;
 }
 
 function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal) {
   let drawSymbol = ' ';
   let boardMessage = '';
-  // console.log('i: ', i);
-  // console.log('check If drawSymbolArr[i] is empty: ', drawSymbolArr[i]);
   if (drawSymbolArr[i] === ' ') {
     drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType, autoReveal);
-    // console.log('createDrawSymbol drawSymbol: ', drawSymbol);
     if (drawSymbol === '_') {
-      // TODO - we need to check neighbors
       drawSymbolArr = revealNeighbors(i, drawSymbolArr, bombsAround);
       autoReveal = true;
-      // console.log('drawSymbolArr!: ', drawSymbolArr);
     }
     if (drawSymbol != ' ' && drawSymbol != '_') {
       boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
@@ -82,26 +90,14 @@ function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick,
 
 function revealNeighbors(i, drawSymbolArr, bombsAround) {
   // TODO we need to find the way how to do it recursively
-  console.log('revealNeighbors');
-  // console.log('coordinates: ', coordinatesForBombsCheck);
-  // console.log('bombsAround: ', bombsAround);
-  // console.log('drawSymbolArr: ', drawSymbolArr);
   let checkForCoordinates = coordinatesForBombsCheck[i];
-  // console.log('checkForCoordinates: ', checkForCoordinates);
   for (let j = 0; j < checkForCoordinates.length; j++) {
-    // console.log('checkForCoordinates[j]: ', checkForCoordinates[j]);
-    // console.log('bombsAround[checkForCoordinates[j]]: ', bombsAround[checkForCoordinates[j]]);
-
     drawSymbolArr[checkForCoordinates[j]] = bombsAround[checkForCoordinates[j]];
-    // console.log('drawSymbolArr[checkForCoordinates[j]]: ', drawSymbolArr[checkForCoordinates[j]]);
   }
-  console.log('drawSymbolArr from revealNeighbors: ', drawSymbolArr);
   return drawSymbolArr;
 }
 
 function createBoardMessage(drawSymbol, bombsAround) {
-  console.log('createBoardMessage');
-  console.log('drawSymbol: ', drawSymbol);
   let boardMessage = '';
   if (drawSymbol === 'X') {
     boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
@@ -138,10 +134,6 @@ function drawBoard(drawSymbolArr, boardMessage) {
   boardBody += '+-+-+-+\n';
   boardBody += '|' + drawSymbolArr[6] + '|' + drawSymbolArr[7] + '|' + drawSymbolArr[8] + '|\n';
   boardBody += '+-+-+-+\n\n';
-
-  if (!drawSymbolArr.includes(' ')) {
-    boardMessage = '[Sandbox 3x3] the land is cleared! GOOD JOB!';
-  }
   boardBody += boardMessage;
   return [boardBody, drawSymbolArr];
 }
@@ -168,8 +160,6 @@ function checkForBombsAround(bombLocations) {
       }
     }
     bombsAround[i] = bombCountSymbol;
-
-    // console.log('bombsAround[i]: ', bombsAround[i]);
   }
   return bombsAround;
 }

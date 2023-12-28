@@ -127,3 +127,8 @@ Pomodoro 14:
 
 - 🚧 IN PROGRESS UAT6.1 When player reveal the [0;0] and bomb is at [0;2] then I should see
   '+-+-+-+\n|_|1| |\n+-+-+-+\n|_|1|1|\n+-+-+-+\n|_|_|\_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'
+
+Pomodoro 14:
+
+- ✅ DONE UAT6.1 When player reveal the [0;0] and bomb is at [0;2] then I should see
+  '+-+-+-+\n|_|1| |\n+-+-+-+\n|_|1|1|\n+-+-+-+\n|_|_|\_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'
