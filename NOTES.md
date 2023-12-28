@@ -116,4 +116,7 @@ Pomodoro 12:
 - 🚧 TODO Refactor createBoardMessage - complexity
 - 🚧 TODO Refactor createDrawSymbol - complexity
 - 🚧 TODO Refactor checkForBombsAround - complexity
-- ⚠ TODO Add more stories and UATs
+
+Pomodoro 13:
+
+- ✅ DONE Add more stories and UATs

@@ -168,3 +168,34 @@ As a user, I want to see the victory message and cleared board when player win
 
 [Sandbox 3x3] the land is cleared! GOOD JOB!
 ```
+
+User Story 6: Automatic square opening
+As a user, I want to see functionality - when player clear a square with 0 neighboring bombs, all its neighbors will automatically open
+
+- ⚠ TODO UAT6.1 When player reveal the [0;0] and bomb is at [0;2] then I should see '
+
+```
++-+-+-+
+|_|1| |
++-+-+-+
+|_|1|1|
++-+-+-+
+|_|_|_|
++-+-+-+
+
+[Sandbox 3x3] the land is cleared! GOOD JOB!
+```
+
+- ⚠ TODO UAT6.2 When player reveal the [0;0] and bomb are at [0;2,2,0] then I should see '
+
+```
++-+-+-+
+|_|1| |
++-+-+-+
+|1|2|1|
++-+-+-+
+| |1|_|
++-+-+-+
+
+[Sandbox 3x3] the land is cleared! GOOD JOB!
+```
