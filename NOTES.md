@@ -143,7 +143,7 @@ Pomodoro 16:
 - ✅ DONE Refactor createBoardBody - complexity
 - ✅ DONE Refactor createBoardMessage - complexity
 - ✅ DONE Refactor createDrawSymbol - complexity
-- ⚠ TODO Refactor checkForBombsAround - complexity
+- ✅ DONE Refactor checkForBombsAround - complexity
 - ⚠ TODO Refactor checkIfWon - complexity
 - ⚠ TODO Refactor number of arguments in the function
 - ⚠ TODO Refactor check for code smells

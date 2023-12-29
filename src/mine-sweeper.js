@@ -169,28 +169,36 @@ function drawBoard(drawSymbolArr, boardMessage) {
 
 function checkForBombsAround(bombLocations) {
   let bombsAround = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  let bombCountSymbol = '';
   for (let i = 0; i < 9; i++) {
     let checkForCoordinates = coordinatesForBombsCheck[i];
     let bombCount = 0;
     for (let j = 0; j < checkForCoordinates.length; j++) {
-      if (bombLocations[checkForCoordinates[j]] === true) {
-        bombCount++;
-      }
+      bombCount = increaseBombCount(bombLocations[checkForCoordinates[j]], bombCount);
     }
-
-    if (bombLocations[i] === true) {
-      bombCountSymbol = ' ';
-    } else {
-      if (bombCount === 0) {
-        bombCountSymbol = '_';
-      } else {
-        bombCountSymbol = bombCount;
-      }
-    }
-    bombsAround[i] = bombCountSymbol;
+    bombsAround[i] = createBombCountSymbol(bombCount, bombLocations, i);
   }
   return bombsAround;
+}
+
+function increaseBombCount(square, bombCount) {
+  if (square === true) {
+    bombCount++;
+  }
+  return bombCount;
+}
+
+function createBombCountSymbol(bombCount, bombLocations, i) {
+  let bombCountSymbol = '';
+  if (bombLocations[i] === true) {
+    bombCountSymbol = ' ';
+  } else {
+    if (bombCount === 0) {
+      bombCountSymbol = '_';
+    } else {
+      bombCountSymbol = bombCount;
+    }
+  }
+  return bombCountSymbol;
 }
 
 module.exports = mineSweeper;
