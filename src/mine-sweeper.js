@@ -89,11 +89,17 @@ function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick,
 }
 
 function revealNeighbors(i, drawSymbolArr, bombsAround) {
-  // TODO we need to find the way how to do it recursively
   let checkForCoordinates = coordinatesForBombsCheck[i];
-  for (let j = 0; j < checkForCoordinates.length; j++) {
-    drawSymbolArr[checkForCoordinates[j]] = bombsAround[checkForCoordinates[j]];
-  }
+  let coordinatesForCheckArr = [];
+  coordinatesForCheckArr.push(...checkForCoordinates);
+  let alreadyCheckedSquares = [];
+  do {
+    let square = coordinatesForCheckArr.shift();
+    alreadyCheckedSquares.push(square);
+    drawSymbolArr[square] = bombsAround[square];
+    coordinatesForCheckArr = coordinatesForCheckArr.concat(coordinatesForBombsCheck[square]);
+    coordinatesForCheckArr = coordinatesForCheckArr.filter((item, idx) => coordinatesForCheckArr.indexOf(item) === idx);
+  } while (coordinatesForCheckArr.length != 0 && alreadyCheckedSquares.length < 9);
   return drawSymbolArr;
 }
 

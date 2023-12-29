@@ -273,7 +273,7 @@ describe('User Story 6: Automatic square opening', () => {
       playerPickType: playerPickType,
       playerPick: playerPick,
     };
-    let expectedBoard = '+-+-+-+\n|_|_|_|\n+-+-+-+\n|1|1|_|\n+-+-+-+\n| |1|_|\n+-+-+-+\n\nSandbox 3x3] the land is cleared! GOOD JOB!';
+    let expectedBoard = '+-+-+-+\n|_|_|_|\n+-+-+-+\n|1|1|_|\n+-+-+-+\n| |1|_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!';
     [board, drawSymbolArr] = mineSweeper(playerMove, bombLocations);
     expect(board).toBe(expectedBoard);
   });

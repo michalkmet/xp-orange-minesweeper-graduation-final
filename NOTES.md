@@ -135,3 +135,7 @@ Pomodoro 14:
 - ✅ DONE UAT6.2 When player reveal the [0;0] and bomb are at [0;2,2,0] then I should see '+-+-+-+\n|_|1| |\n+-+-+-+\n|1|2|1|\n+-+-+-+\n| |1|_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'
 - ✅ DONE new uat
 - 🚧 IN PROGRESS UAT6.3 When player reveal the [2;2] and bomb is at [2,0] then I should see '+-+-+-+\n|_|_|_|\n+-+-+-+\n|1|1|_|\n+-+-+-+\n| |1|\_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'
+
+Pomodoro 15:
+
+- ✅ DONE UAT6.3 When player reveal the [2;2] and bomb is at [2,0] then I should see '+-+-+-+\n|_|_|_|\n+-+-+-+\n|1|1|_|\n+-+-+-+\n| |1|\_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!'
