@@ -8,7 +8,7 @@ User Story 1: Game created
 As a user, I want to see empty board and game created message
 
 ```
-- ⚠ TODO UAT1.1 When game start then I should see '
+- ✅ DONE UAT1.1 When game start then I should see '
 +-+-+-+
 | | | |
 +-+-+-+
@@ -24,7 +24,7 @@ User Story 2: Step on the bomb
 As a user, I want to see when player steps on the bomb and game end message
 
 ```
-- ⚠ TODO UAT2.1 When player steps on the bomb [1;1] then I should see '
+- ✅ DONE UAT2.1 When player steps on the bomb [1;1] then I should see '
 +-+-+-+
 | | | |
 +-+-+-+
@@ -37,7 +37,7 @@ As a user, I want to see when player steps on the bomb and game end message
 ```
 
 ```
-- ⚠ TODO UAT2.2 When player steps on the bomb [0;0] then I should see '
+- ✅ DONE UAT2.2 When player steps on the bomb [0;0] then I should see '
 +-+-+-+
 |X| | |
 +-+-+-+
@@ -50,7 +50,7 @@ As a user, I want to see when player steps on the bomb and game end message
 ```
 
 ```
-- ⚠ TODO UAT2.3 When player steps on the bomb [2;0] then I should see '
+- ✅ DONE UAT2.3 When player steps on the bomb [2;0] then I should see '
 +-+-+-+
 | | | |
 +-+-+-+
@@ -65,7 +65,7 @@ As a user, I want to see when player steps on the bomb and game end message
 User Story 3: Reveal the number of bombs around
 As a user, I want to see the number of bombs around when player reveals the square and appropriate message
 
-- ⚠ TODO UAT3.1 When player clears square [2;0] and there are 3 bombs around then I should see '
+- ✅ DONE UAT3.1 When player clears square [2;0] and there are 3 bombs around then I should see '
 
 ```
 +-+-+-+
@@ -79,7 +79,7 @@ As a user, I want to see the number of bombs around when player reveals the squa
 [Sandbox 3x3] 3 bombs around your square.
 ```
 
-- ⚠ TODO UAT3.2 When player clears square [0;0] and there is 1 bomb around then I should see '
+- ✅ DONE UAT3.2 When player clears square [0;0] and there is 1 bomb around then I should see '
 
 ```
 +-+-+-+
@@ -93,7 +93,7 @@ As a user, I want to see the number of bombs around when player reveals the squa
 [Sandbox 3x3] 1 bomb around your square.
 ```
 
-- ⚠ TODO UAT3.3 When player clears square [2;0] and there are 2 bombs around then I should see '
+- ✅ DONE UAT3.3 When player clears square [2;0] and there are 2 bombs around then I should see '
 
 ```
 +-+-+-+
@@ -110,7 +110,7 @@ As a user, I want to see the number of bombs around when player reveals the squa
 User Story 4: flag the square
 As a user, I want to see the \* on the square when player decided to flag square as a bomb location and appropriate message
 
-- ⚠ TODO UAT4.1 When player flags the square [0;1] as a bomb location then I should see '
+- ✅ DONE UAT4.1 When player flags the square [0;1] as a bomb location then I should see '
 
 ```
 +-+-+-+
@@ -124,7 +124,7 @@ As a user, I want to see the \* on the square when player decided to flag square
 [Sandbox 3x3] Square flagged as bomb.
 ```
 
-- ⚠ TODO UAT4.2 When player flags 2 squares as bombs [0;1,1;1] then I should see '
+- ✅ DONE UAT4.2 When player flags 2 squares as bombs [0;1,1;1] then I should see '
 
 ```
 +-+-+-+
@@ -138,7 +138,7 @@ As a user, I want to see the \* on the square when player decided to flag square
 [Sandbox 3x3] Square flagged as bomb.
 ```
 
-- ⚠ TODO UAT4.3 When player reveal the [2;0] and then flags 3 squares as bombs [1;0 + 1;1 + 2;1] then I should see '
+- ✅ DONE UAT4.3 When player reveal the [2;0] and then flags 3 squares as bombs [1;0 + 1;1 + 2;1] then I should see '
 
 ```
 +-+-+-+
@@ -155,7 +155,7 @@ As a user, I want to see the \* on the square when player decided to flag square
 User Story 5: Victory
 As a user, I want to see the victory message and cleared board when player win
 
-- ⚠ TODO UAT5.1 When player reveal the [2;0 + 0;0 + 0;1 + 0;2 + 2;2 + 1;2] and win the game then I should see '
+- ✅ DONE UAT5.1 When player reveal the [2;0 + 0;0 + 0;1 + 0;2 + 2;2 + 1;2] and win the game then I should see '
 
 ```
 +-+-+-+
@@ -172,7 +172,7 @@ As a user, I want to see the victory message and cleared board when player win
 User Story 6: Automatic square opening
 As a user, I want to see functionality - when player clear a square with 0 neighboring bombs, all its neighbors will automatically open
 
-- ⚠ TODO UAT6.1 When player reveal the [0;0] and bomb is at [0;2] then I should see '
+- ✅ DONE UAT6.1 When player reveal the [0;0] and bomb is at [0;2] then I should see '
 
 ```
 +-+-+-+
@@ -186,7 +186,7 @@ As a user, I want to see functionality - when player clear a square with 0 neigh
 [Sandbox 3x3] the land is cleared! GOOD JOB!
 ```
 
-- ⚠ TODO UAT6.2 When player reveal the [0;0] and bomb are at [0;2,2,0] then I should see '
+- ✅ DONE UAT6.2 When player reveal the [0;0] and bomb are at [0;2,2,0] then I should see '
 
 ```
 +-+-+-+
@@ -200,7 +200,7 @@ As a user, I want to see functionality - when player clear a square with 0 neigh
 [Sandbox 3x3] the land is cleared! GOOD JOB!
 ```
 
-- ⚠ TODO UAT6.3 When player reveal the [2;2] and bomb is at [2;0] then I should see '
+- ✅ DONE UAT6.3 When player reveal the [2;2] and bomb is at [2;0] then I should see '
 
 ```
 +-+-+-+
@@ -214,7 +214,7 @@ As a user, I want to see functionality - when player clear a square with 0 neigh
 [Sandbox 3x3] the land is cleared! GOOD JOB!
 ```
 
-- ⚠ TODO UAT6.4 When player reveal the [2;2] and bombs are at [0;1,0;2] then I should see '
+- ✅ DONE UAT6.4 When player reveal the [2;2] and bombs are at [0;1,0;2] then I should see '
 
 ```
 +-+-+-+
