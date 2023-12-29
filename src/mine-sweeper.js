@@ -36,13 +36,12 @@ function createWholeBoard(playerPick, bombLocations, playerPickType, previousBoa
 }
 
 function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround, previousBoard) {
-  let boardMessage = '';
   let emptyBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
   let boardMessageArr = [];
   let autoReveal = false;
   let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
-  [drawSymbolArr, boardMessage, autoReveal, boardMessageArr] = iterateThroughBoard(
-    boardMessage,
+  [drawSymbolArr, autoReveal, boardMessageArr] = iterateThroughBoard(
+    '',
     autoReveal,
     drawSymbolArr,
     boardMessageArr,
@@ -73,7 +72,7 @@ function iterateThroughBoard(boardMessage, autoReveal, drawSymbolArr, boardMessa
       boardMessageArr.push(boardMessageStr);
     }
   }
-  return [drawSymbolArr, boardMessageStr, autoReveal, boardMessageArr];
+  return [drawSymbolArr, autoReveal, boardMessageArr];
 }
 
 function checkIfWon(bombLocations, drawSymbolArr, autoReveal) {
