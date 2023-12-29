@@ -58,13 +58,22 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
 }
 
 function iterateThroughBoard(boardMessage, autoReveal, drawSymbolArr, boardMessageArr, playerPickType, playerPick, bombLocations, bombsAround) {
+  let boardMessageStr = boardMessage;
   for (let i = 0; i < 9; i++) {
-    [drawSymbolArr, boardMessage, autoReveal] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal);
-    if (boardMessage != '') {
-      boardMessageArr.push(boardMessage);
+    [drawSymbolArr, boardMessageStr, autoReveal] = drawSymbolAndBoardMessage(
+      i,
+      drawSymbolArr,
+      playerPickType,
+      playerPick,
+      bombLocations,
+      bombsAround,
+      autoReveal,
+    );
+    if (boardMessageStr != '') {
+      boardMessageArr.push(boardMessageStr);
     }
   }
-  return [drawSymbolArr, boardMessage, autoReveal, boardMessageArr];
+  return [drawSymbolArr, boardMessageStr, autoReveal, boardMessageArr];
 }
 
 function checkIfWon(bombLocations, drawSymbolArr, autoReveal) {
