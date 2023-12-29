@@ -169,7 +169,6 @@ describe('User Story 5: Victory', () => {
     expect(board).toBe(expectedBoard);
 
     playerPick = [false, false, false, false, true, false, false, false, false];
-    playerPickType = 'Flag';
     playerMove = {
       playerPickType: playerPickType,
       playerPick: playerPick,
@@ -179,7 +178,6 @@ describe('User Story 5: Victory', () => {
     expect(board).toBe(expectedBoard);
 
     playerPick = [false, false, false, false, false, false, false, true, false];
-    playerPickType = 'Flag';
     playerMove = {
       playerPickType: playerPickType,
       playerPick: playerPick,
@@ -199,7 +197,6 @@ describe('User Story 5: Victory', () => {
     expect(board).toBe(expectedBoard);
 
     playerPick = [false, true, false, false, false, false, false, true, false];
-    playerPickType = 'Reveal';
     playerMove = {
       playerPickType: playerPickType,
       playerPick: playerPick,
@@ -209,7 +206,6 @@ describe('User Story 5: Victory', () => {
     expect(board).toBe(expectedBoard);
 
     playerPick = [false, false, true, false, false, false, false, true, false];
-    playerPickType = 'Reveal';
     playerMove = {
       playerPickType: playerPickType,
       playerPick: playerPick,
@@ -219,7 +215,6 @@ describe('User Story 5: Victory', () => {
     expect(board).toBe(expectedBoard);
 
     playerPick = [false, false, false, false, false, true, false, false, false];
-    playerPickType = 'Reveal';
     playerMove = {
       playerPickType: playerPickType,
       playerPick: playerPick,
@@ -229,7 +224,6 @@ describe('User Story 5: Victory', () => {
     expect(board).toBe(expectedBoard);
 
     playerPick = [false, false, false, false, false, false, false, false, true];
-    playerPickType = 'Reveal';
     playerMove = {
       playerPickType: playerPickType,
       playerPick: playerPick,
