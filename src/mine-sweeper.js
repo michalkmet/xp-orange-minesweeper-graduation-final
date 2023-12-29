@@ -54,7 +54,7 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
   if (checkIfWon(bombLocations, drawSymbolArr, autoReveal)) {
     boardMessageArr[0] = '[Sandbox 3x3] the land is cleared! GOOD JOB!';
   }
-  return drawBoard(drawSymbolArr, boardMessageArr[0], autoReveal);
+  return drawBoard(drawSymbolArr, boardMessageArr[0]);
 }
 
 function iterateThroughBoard(boardMessage, autoReveal, drawSymbolArr, boardMessageArr, playerPickType, playerPick, bombLocations, bombsAround) {

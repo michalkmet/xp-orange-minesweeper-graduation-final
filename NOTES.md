@@ -150,5 +150,9 @@ Pomodoro 17:
 - ✅ DONE Refactor checkIfWon - complexity
 - ✅ DONE Refactor drawSymbolAndBoardMessage - complexity
 - ✅ DONE Refactor revealNeighbors - complexity
+
+Pomodoro 18:
+
 - ⚠ TODO Refactor number of arguments in the function
-- ⚠ TODO Refactor check for code smells
+- 🚧 IN PROGRESS Refactor bugs and code smells
+-
