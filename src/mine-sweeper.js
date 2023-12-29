@@ -137,13 +137,19 @@ function createBombsAroundMessage(bombsAround, drawSymbol) {
 function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickType, autoReveal) {
   let drawSymbol = ' ';
   if (playerPick === true) {
-    if (playerPickType === 'Flag') {
-      drawSymbol = '*';
-    } else {
-      drawSymbol = bombLocation === true ? 'X' : '' + bombsAround[i];
-    }
+    drawSymbol = createDrawSymbolWhenPlayerPick(playerPickType, bombLocation, bombsAround, i);
   } else if (autoReveal === true) {
     drawSymbol = '' + bombsAround[i];
+  }
+  return drawSymbol;
+}
+
+function createDrawSymbolWhenPlayerPick(playerPickType, bombLocation, bombsAround, i) {
+  let drawSymbol = ' ';
+  if (playerPickType === 'Flag') {
+    drawSymbol = '*';
+  } else {
+    drawSymbol = bombLocation === true ? 'X' : '' + bombsAround[i];
   }
   return drawSymbol;
 }
