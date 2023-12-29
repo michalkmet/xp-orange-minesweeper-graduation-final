@@ -68,21 +68,39 @@ function iterateThroughBoard(boardMessage, autoReveal, drawSymbolArr, boardMessa
 }
 
 function checkIfWon(bombLocations, drawSymbolArr, autoReveal) {
-  let result = false;
   let bombsCountTotal = 0;
   let bombsCountInBoardTotal = 0;
   for (let j = 0; j < 9; j++) {
-    if (bombLocations[j] === true) {
-      bombsCountTotal++;
-    }
-    if (drawSymbolArr[j] === ' ') {
-      bombsCountInBoardTotal++;
-    }
+    bombsCountTotal = increaseBombCountTotal(bombLocations[j], bombsCountTotal);
+    bombsCountInBoardTotal = increaseBombCountInBoardTotal(drawSymbolArr[j], bombsCountInBoardTotal);
   }
-  if ((autoReveal && bombsCountTotal === bombsCountInBoardTotal) || bombsCountInBoardTotal === 0) {
+  return determineResult(autoReveal, bombsCountTotal, bombsCountInBoardTotal);
+}
+
+function increaseBombCountInBoardTotal(square, bombsCountInBoardTotal) {
+  if (square === ' ') {
+    bombsCountInBoardTotal++;
+  }
+  return bombsCountInBoardTotal;
+}
+
+function increaseBombCountTotal(square, bombsCountTotal) {
+  if (square === true) {
+    bombsCountTotal++;
+  }
+  return bombsCountTotal;
+}
+
+function determineResult(autoReveal, bombsCountTotal, bombsCountInBoardTotal) {
+  let result = false;
+  if (autoRevealAndBombsTotal(autoReveal, bombsCountTotal, bombsCountInBoardTotal) || bombsCountInBoardTotal === 0) {
     result = true;
   }
   return result;
+}
+
+function autoRevealAndBombsTotal(autoReveal, bombsCountTotal, bombsCountInBoardTotal) {
+  return autoReveal && bombsCountTotal === bombsCountInBoardTotal;
 }
 
 function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal) {
