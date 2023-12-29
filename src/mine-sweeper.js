@@ -108,16 +108,22 @@ function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick,
   let boardMessage = '';
   if (drawSymbolArr[i] === ' ') {
     drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType, autoReveal);
-    if (drawSymbol === '_') {
-      drawSymbolArr = revealNeighbors(i, drawSymbolArr, bombsAround);
-      autoReveal = true;
-    }
-    if (drawSymbol != ' ' && drawSymbol != '_') {
-      boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
-    }
+    [drawSymbolArr, autoReveal, boardMessage] = addDrawSymbolAndSetBoardMessage(drawSymbol, drawSymbolArr, i, bombsAround, autoReveal, boardMessage);
     drawSymbolArr[i] = drawSymbol;
   }
   return [drawSymbolArr, boardMessage, autoReveal];
+}
+
+function addDrawSymbolAndSetBoardMessage(drawSymbol, drawSymbolArr, i, bombsAround, autoReveal, boardMessage) {
+  const bombOrEmptySquare = [' ', '_'];
+  if (drawSymbol === '_') {
+    drawSymbolArr = revealNeighbors(i, drawSymbolArr, bombsAround);
+    autoReveal = true;
+  }
+  if (!bombOrEmptySquare.includes(drawSymbol)) {
+    boardMessage = createBoardMessage(drawSymbol, bombsAround[i]);
+  }
+  return [drawSymbolArr, autoReveal, boardMessage];
 }
 
 function revealNeighbors(i, drawSymbolArr, bombsAround) {
@@ -131,8 +137,12 @@ function revealNeighbors(i, drawSymbolArr, bombsAround) {
     drawSymbolArr[square] = bombsAround[square];
     coordinatesForCheckArr = coordinatesForCheckArr.concat(coordinatesForBombsCheck[square]);
     coordinatesForCheckArr = coordinatesForCheckArr.filter((item, idx) => coordinatesForCheckArr.indexOf(item) === idx);
-  } while (coordinatesForCheckArr.length != 0 && alreadyCheckedSquares.length < 9);
+  } while (trueCondition(coordinatesForCheckArr, alreadyCheckedSquares));
   return drawSymbolArr;
+}
+
+function trueCondition(coordinatesForCheckArr, alreadyCheckedSquares) {
+  return coordinatesForCheckArr.length != 0 && alreadyCheckedSquares.length < 9;
 }
 
 function createBoardMessage(drawSymbol, bombsAround) {
