@@ -41,16 +41,30 @@ function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround,
   let boardMessageArr = [];
   let autoReveal = false;
   let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
+  [drawSymbolArr, boardMessage, autoReveal, boardMessageArr] = iterateThroughBoard(
+    boardMessage,
+    autoReveal,
+    drawSymbolArr,
+    boardMessageArr,
+    playerPickType,
+    playerPick,
+    bombLocations,
+    bombsAround,
+  );
+  if (checkIfWon(bombLocations, drawSymbolArr, autoReveal)) {
+    boardMessageArr[0] = '[Sandbox 3x3] the land is cleared! GOOD JOB!';
+  }
+  return drawBoard(drawSymbolArr, boardMessageArr[0], autoReveal);
+}
+
+function iterateThroughBoard(boardMessage, autoReveal, drawSymbolArr, boardMessageArr, playerPickType, playerPick, bombLocations, bombsAround) {
   for (let i = 0; i < 9; i++) {
     [drawSymbolArr, boardMessage, autoReveal] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal);
     if (boardMessage != '') {
       boardMessageArr.push(boardMessage);
     }
   }
-  if (checkIfWon(bombLocations, drawSymbolArr, autoReveal)) {
-    boardMessageArr[0] = '[Sandbox 3x3] the land is cleared! GOOD JOB!';
-  }
-  return drawBoard(drawSymbolArr, boardMessageArr[0], autoReveal);
+  return [drawSymbolArr, boardMessage, autoReveal, boardMessageArr];
 }
 
 function checkIfWon(bombLocations, drawSymbolArr, autoReveal) {
@@ -110,10 +124,14 @@ function createBoardMessage(drawSymbol, bombsAround) {
   } else if (drawSymbol === '*') {
     boardMessage = '[Sandbox 3x3] Square flagged as bomb.';
   } else {
-    let bombsStr = bombsAround > 1 ? drawSymbol + ' bombs' : drawSymbol + ' bomb';
-    boardMessage = '[Sandbox 3x3] ' + bombsStr + ' around your square.';
+    boardMessage = createBombsAroundMessage(bombsAround, drawSymbol);
   }
   return boardMessage;
+}
+
+function createBombsAroundMessage(bombsAround, drawSymbol) {
+  let bombsStr = bombsAround > 1 ? drawSymbol + ' bombs' : drawSymbol + ' bomb';
+  return '[Sandbox 3x3] ' + bombsStr + ' around your square.';
 }
 
 function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickType, autoReveal) {
