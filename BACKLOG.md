@@ -200,7 +200,7 @@ As a user, I want to see functionality - when player clear a square with 0 neigh
 [Sandbox 3x3] the land is cleared! GOOD JOB!
 ```
 
-- ⚠ TODO UAT6.3 When player reveal the [2;2] and bomb is at [2,0] then I should see '
+- ⚠ TODO UAT6.3 When player reveal the [2;2] and bomb is at [2;0] then I should see '
 
 ```
 +-+-+-+
@@ -209,6 +209,20 @@ As a user, I want to see functionality - when player clear a square with 0 neigh
 |1|1|_|
 +-+-+-+
 | |1|_|
++-+-+-+
+
+[Sandbox 3x3] the land is cleared! GOOD JOB!
+```
+
+- ⚠ TODO UAT6.4 When player reveal the [2;2] and bombs are at [0;1,0;2] then I should see '
+
+```
++-+-+-+
+| |2| |
++-+-+-+
+|1|2|1|
++-+-+-+
+|_|_|_|
 +-+-+-+
 
 [Sandbox 3x3] the land is cleared! GOOD JOB!
