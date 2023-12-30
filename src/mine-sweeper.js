@@ -13,8 +13,6 @@ const coordinatesForBombsCheck = {
 function mineSweeper(playerMove, bombLocations, previousBoard = []) {
   let board = '';
   let drawSymbolArr = [];
-  // let playerPick = playerMove.playerPick;
-  // let playerPickType = playerMove.playerPickType;
   [board, drawSymbolArr] = createWholeBoard(playerMove, bombLocations, previousBoard);
   console.log(board);
   return [board, drawSymbolArr];
@@ -137,7 +135,7 @@ function trueCondition(coordinatesForCheckArr, alreadyCheckedSquares) {
 }
 
 function createBoardMessage(drawSymbol, bombsAround) {
-  let boardMessage;
+  let boardMessage = '';
   if (drawSymbol === 'X') {
     boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
   } else if (drawSymbol === '*') {
