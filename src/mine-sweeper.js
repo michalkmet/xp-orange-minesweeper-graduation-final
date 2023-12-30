@@ -195,8 +195,8 @@ function checkForBombsAround(bombLocations) {
   for (let i = 0; i < 9; i++) {
     let checkForCoordinates = coordinatesForBombsCheck[i];
     let bombCount = 0;
-    for (let j = 0; j < checkForCoordinates.length; j++) {
-      bombCount = increaseBombCount(bombLocations[checkForCoordinates[j]], bombCount);
+    for (let coordinates of checkForCoordinates) {
+      bombCount = increaseBombCount(bombLocations[coordinates], bombCount);
     }
     bombsAround[i] = createBombCountSymbol(bombCount, bombLocations, i);
   }
