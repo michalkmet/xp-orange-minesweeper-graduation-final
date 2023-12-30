@@ -158,5 +158,9 @@ Pomodoro 18:
 
 Pomodoro 19:
 
-- ⚠ TODO Refactor number of arguments in the function
-- 🚧 IN PROGRESS Refactor bugs and code smells
+- ✅ DONE Refactor number of arguments in the function
+- ✅ DONE Refactor bugs and code smells
+
+Pomodoro 20:
+
+- ✅ DONE quality gate - duplicates
