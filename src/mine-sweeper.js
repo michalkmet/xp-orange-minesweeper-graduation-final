@@ -138,7 +138,6 @@ function trueCondition(coordinatesForCheckArr, alreadyCheckedSquares) {
 
 function createBoardMessage(drawSymbol, bombsAround) {
   let boardMessage;
-  boardMessage = '';
   if (drawSymbol === 'X') {
     boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
   } else if (drawSymbol === '*') {
