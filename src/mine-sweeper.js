@@ -13,61 +13,44 @@ const coordinatesForBombsCheck = {
 function mineSweeper(playerMove, bombLocations, previousBoard = []) {
   let board = '';
   let drawSymbolArr = [];
-  let playerPick = playerMove.playerPick;
-  let playerPickType = playerMove.playerPickType;
-  [board, drawSymbolArr] = createWholeBoard(playerPick, bombLocations, playerPickType, previousBoard);
+  // let playerPick = playerMove.playerPick;
+  // let playerPickType = playerMove.playerPickType;
+  [board, drawSymbolArr] = createWholeBoard(playerMove, bombLocations, previousBoard);
   console.log(board);
   return [board, drawSymbolArr];
 }
 
-function createWholeBoard(playerPick, bombLocations, playerPickType, previousBoard) {
+function createWholeBoard(playerMove, bombLocations, previousBoard) {
   let board = '';
   let boardMessage = '';
   let drawSymbolArr = [];
   let bombsAround = checkForBombsAround(bombLocations);
 
-  if (playerPick.includes(true) === false) {
+  if (playerMove.playerPick.includes(true) === false) {
     boardMessage = '[Sandbox 3x3] Game created';
     board = '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n' + boardMessage;
   } else {
-    [board, drawSymbolArr] = createBoardBody(playerPickType, playerPick, bombLocations, bombsAround, previousBoard);
+    [board, drawSymbolArr] = createBoardBody(playerMove, bombLocations, bombsAround, previousBoard);
   }
   return [board, drawSymbolArr];
 }
 
-function createBoardBody(playerPickType, playerPick, bombLocations, bombsAround, previousBoard) {
+function createBoardBody(playerMove, bombLocations, bombsAround, previousBoard) {
   let emptyBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
   let boardMessageArr = [];
   let autoReveal = false;
   let drawSymbolArr = previousBoard.length === 0 ? emptyBoard : previousBoard;
-  [drawSymbolArr, autoReveal, boardMessageArr] = iterateThroughBoard(
-    '',
-    autoReveal,
-    drawSymbolArr,
-    boardMessageArr,
-    playerPickType,
-    playerPick,
-    bombLocations,
-    bombsAround,
-  );
+  [drawSymbolArr, autoReveal, boardMessageArr] = iterateThroughBoard('', autoReveal, drawSymbolArr, boardMessageArr, playerMove, bombLocations, bombsAround);
   if (checkIfWon(bombLocations, drawSymbolArr, autoReveal)) {
     boardMessageArr[0] = '[Sandbox 3x3] the land is cleared! GOOD JOB!';
   }
   return drawBoard(drawSymbolArr, boardMessageArr[0]);
 }
 
-function iterateThroughBoard(boardMessage, autoReveal, drawSymbolArr, boardMessageArr, playerPickType, playerPick, bombLocations, bombsAround) {
+function iterateThroughBoard(boardMessage, autoReveal, drawSymbolArr, boardMessageArr, playerMove, bombLocations, bombsAround) {
   let boardMessageStr = boardMessage;
   for (let i = 0; i < 9; i++) {
-    [drawSymbolArr, boardMessageStr, autoReveal] = drawSymbolAndBoardMessage(
-      i,
-      drawSymbolArr,
-      playerPickType,
-      playerPick,
-      bombLocations,
-      bombsAround,
-      autoReveal,
-    );
+    [drawSymbolArr, boardMessageStr, autoReveal] = drawSymbolAndBoardMessage(i, drawSymbolArr, playerMove, bombLocations, bombsAround, autoReveal);
     if (boardMessageStr != '') {
       boardMessageArr.push(boardMessageStr);
     }
@@ -111,11 +94,11 @@ function autoRevealAndBombsTotal(autoReveal, bombsCountTotal, bombsCountInBoardT
   return autoReveal && bombsCountTotal === bombsCountInBoardTotal;
 }
 
-function drawSymbolAndBoardMessage(i, drawSymbolArr, playerPickType, playerPick, bombLocations, bombsAround, autoReveal) {
+function drawSymbolAndBoardMessage(i, drawSymbolArr, playerMove, bombLocations, bombsAround, autoReveal) {
   let drawSymbol = ' ';
   let boardMessage = '';
   if (drawSymbolArr[i] === ' ') {
-    drawSymbol = createDrawSymbol(i, playerPick[i], bombLocations[i], bombsAround, playerPickType, autoReveal);
+    drawSymbol = createDrawSymbol(i, playerMove, bombLocations[i], bombsAround, autoReveal);
     [drawSymbolArr, autoReveal, boardMessage] = addDrawSymbolAndSetBoardMessage(drawSymbol, drawSymbolArr, i, bombsAround, autoReveal, boardMessage);
     drawSymbolArr[i] = drawSymbol;
   }
@@ -171,10 +154,10 @@ function createBombsAroundMessage(bombsAround, drawSymbol) {
   return '[Sandbox 3x3] ' + bombsStr + ' around your square.';
 }
 
-function createDrawSymbol(i, playerPick, bombLocation, bombsAround, playerPickType, autoReveal) {
+function createDrawSymbol(i, playerMove, bombLocation, bombsAround, autoReveal) {
   let drawSymbol = ' ';
-  if (playerPick === true) {
-    drawSymbol = createDrawSymbolWhenPlayerPick(playerPickType, bombLocation, bombsAround, i);
+  if (playerMove.playerPick[i] === true) {
+    drawSymbol = createDrawSymbolWhenPlayerPick(playerMove.playerPickType, bombLocation, bombsAround, i);
   } else if (autoReveal === true) {
     drawSymbol = '' + bombsAround[i];
   }
