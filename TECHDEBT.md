@@ -1,4 +1,4 @@
 # Techdebt
 
-- ⚠ TODO Refactor board creation + remove duplicate code
-- ⚠ TODO remove bugs and code smells from sonarcloud
+- ✅ DONE Refactor board creation + remove duplicate code
+- ✅ DONE remove bugs and code smells from sonarcloud
