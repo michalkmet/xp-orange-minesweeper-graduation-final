@@ -214,12 +214,10 @@ function createBombCountSymbol(bombCount, bombLocations, i) {
   let bombCountSymbol = '';
   if (bombLocations[i] === true) {
     bombCountSymbol = ' ';
+  } else if (bombCount === 0) {
+    bombCountSymbol = '_';
   } else {
-    if (bombCount === 0) {
-      bombCountSymbol = '_';
-    } else {
-      bombCountSymbol = bombCount;
-    }
+    bombCountSymbol = bombCount;
   }
   return bombCountSymbol;
 }
