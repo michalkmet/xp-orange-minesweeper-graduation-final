@@ -135,15 +135,20 @@ function trueCondition(coordinatesForCheckArr, alreadyCheckedSquares) {
 }
 
 function createBoardMessage(drawSymbol, bombsAround) {
-  let boardMessage = '';
-  if (drawSymbol === 'X') {
-    boardMessage = '[Sandbox 3x3] BOOM! – Game Over.';
-  } else if (drawSymbol === '*') {
-    boardMessage = '[Sandbox 3x3] Square flagged as bomb.';
+  let bombAndSignSymbols = ['X', '*'];
+  if (bombAndSignSymbols.includes(drawSymbol)) {
+    return createBombAndSignMessage(drawSymbol);
   } else {
-    boardMessage = createBombsAroundMessage(bombsAround, drawSymbol);
+    return createBombsAroundMessage(bombsAround, drawSymbol);
   }
-  return boardMessage;
+}
+
+function createBombAndSignMessage(drawSymbol) {
+  if (drawSymbol === 'X') {
+    return '[Sandbox 3x3] BOOM! – Game Over.';
+  } else {
+    return '[Sandbox 3x3] Square flagged as bomb.';
+  }
 }
 
 function createBombsAroundMessage(bombsAround, drawSymbol) {
@@ -152,13 +157,12 @@ function createBombsAroundMessage(bombsAround, drawSymbol) {
 }
 
 function createDrawSymbol(i, playerMove, bombLocation, bombsAround, autoReveal) {
-  let drawSymbol = ' ';
   if (playerMove.playerPick[i] === true) {
-    drawSymbol = createDrawSymbolWhenPlayerPick(playerMove.playerPickType, bombLocation, bombsAround, i);
+    return createDrawSymbolWhenPlayerPick(playerMove.playerPickType, bombLocation, bombsAround, i);
   } else if (autoReveal === true) {
-    drawSymbol = '' + bombsAround[i];
+    return '' + bombsAround[i];
   }
-  return drawSymbol;
+  return ' ';
 }
 
 function createDrawSymbolWhenPlayerPick(playerPickType, bombLocation, bombsAround, i) {
