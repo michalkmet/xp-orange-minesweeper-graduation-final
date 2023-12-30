@@ -166,13 +166,15 @@ function createDrawSymbol(i, playerMove, bombLocation, bombsAround, autoReveal) 
 }
 
 function createDrawSymbolWhenPlayerPick(playerPickType, bombLocation, bombsAround, i) {
-  let drawSymbol = ' ';
   if (playerPickType === 'Flag') {
-    drawSymbol = '*';
+    return '*';
   } else {
-    drawSymbol = bombLocation === true ? 'X' : '' + bombsAround[i];
+    return bombOrBombsAround(bombLocation, bombsAround[i]);
   }
-  return drawSymbol;
+}
+
+function bombOrBombsAround(bombLocation, bombsAround) {
+  return bombLocation === true ? 'X' : '' + bombsAround;
 }
 
 function drawBoard(drawSymbolArr, boardMessage) {
